@@ -1,0 +1,17 @@
+version: "0.0"
+name: web-shop/dev
+services:
+  frontend:
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    image: web-shop/dev:0.0.1
+    # build:
+    #   context: .
+    #   dockerfile: dev.Dockerfile
+    volumes:
+      - ./src:/app/src
+      - ./node_modules:/app/node_modules
+      - ./public:/app/public
+    ports:
+      - 3000:3000

@@ -1,0 +1,10 @@
+version: "3"
+name: shop-server
+services:
+  shop-server:
+    image: shop-server:0.0.1
+    container_name: shop-server
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 8080:3000

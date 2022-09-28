@@ -1,0 +1,28 @@
+version: "3"
+services:
+  reverse-proxy:
+    image: nginx:1.17.10
+    container_name: reverse-proxy
+    depends_on:
+      - shop
+      - shop-server
+    volumes:
+      - ./reverse_proxy/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+  shop:
+    image: web-shop/prod
+    container_name: shop
+    depends_on:
+      - shop-server
+    build:
+      context: ./shop
+      dockerfile: prod.Dockerfile
+    restart: on-failure
+  shop-server:
+    image: shop-server
+    container_name: shop-server
+    build:
+      context: ./shop-server
+    volumes:
+      - ./shop-server/src:/app/src
