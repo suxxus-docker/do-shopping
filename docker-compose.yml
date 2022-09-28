@@ -20,9 +20,9 @@ services:
       dockerfile: prod.Dockerfile
     restart: on-failure
   shop-server:
-    image: shop-server
+    image: shop-server/prod
     container_name: shop-server
     build:
       context: ./shop-server
-    volumes:
-      - ./shop-server/src:/app/src
+      dockerfile: prod.Dockerfile
+    restart: on-failure
