@@ -1,9 +1,12 @@
 version: "3"
-name: shop-server
+name: shop-server-dev
 services:
-  shop-server:
-    image: shop-server:0.0.1
-    container_name: shop-server
+  shop-server-dev:
+    image: shop-server/dev
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    container_name: shop-server-dev
     volumes:
       - ./src:/app/src
     ports:
