@@ -18,8 +18,7 @@ app.get("/products", (_, res) => {
   axios
     .get("https://dummyjson.com/products/")
     .then(function ({ data }) {
-      const j = JSON.stringify(data, null, 3);
-      res.send(j);
+      res.send(data);
     })
     .catch(function (error) {
       console.log(error);
@@ -31,9 +30,8 @@ app.get("/products/:productId", (req, res) => {
   const productId = req.params?.productId ?? "";
   axios
     .get(`https://dummyjson.com/products/${productId}`)
-    .then(function (response) {
-      const j = JSON.stringify(response.data, null, 3);
-      res.send(j);
+    .then(function ({ data }) {
+      res.send(data);
     })
     .catch(function (error) {
       const msg = error?.response?.data ?? "0";
