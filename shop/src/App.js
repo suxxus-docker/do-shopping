@@ -4,9 +4,11 @@ import "./App.css";
 import axios from "axios";
 import { AxiosProvider, Get } from "react-axios";
 
+import { processenv } from "processenv";
+
 const axiosInstance = axios.create({
-  baseURL: "http://127.0.0.1",
   timeOut: 2000,
+  baseURL: processenv("REACT_APP_BASE_URL", "http://127.0.0.1")
 });
 
 function ProductsList({ products }) {
@@ -44,7 +46,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h1>My list</h1>
         <Api />
       </header>
     </div>
