@@ -3,7 +3,7 @@ name: frontend
 services:
   frontend:
     environment:
-      - NODE_ENV=development
+      - REACT_APP_BASE_URL=http://127.0.0.1:8080
     image: web-shop/dev
     build:
       context: .
